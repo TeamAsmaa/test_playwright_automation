@@ -58,7 +58,7 @@ def test_complete_mission(page: Page, mission_url: str):
     
     # Ensure dashboard is loaded
     assert page.url == "https://codingville-staging.rgp-dev.com/teacher/dashboard"
-    print("✅ Logged in successfully")
+    print("Logged in successfully")
 
     # -----------------------------
     # Step 2: Complete mission

@@ -12,7 +12,7 @@ def test_login_success(page: Page):
 
     # Assert dashboard loaded
     assert page.url == "https://codingville-staging.rgp-dev.com/teacher/dashboard"
-    print("✅ Login successful")
+    print("Login successful")
 
 # -----------------------------
 # Test: Invalid credentials
@@ -26,4 +26,4 @@ def test_login_invalid_credentials(page: Page):
         login_page.login("wrong_user", "wrong_pass")
 
     assert "Login failed" in str(e.value)
-    print("✅ Invalid credentials correctly blocked")
+    print("Invalid credentials correctly blocked")

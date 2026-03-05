@@ -17,18 +17,7 @@ class MissionPage:
         # Mission action buttons
         self.show_model_answer_button = page.get_by_role("button", name="Show Model Answer")
         self.run_button = page.get_by_role("button", name="Run ", exact=True)
-        self.finish_button = page.locator("#finish-mission-btn")
-        
-        # # iFrame elements
-        # self.iframe = page.locator("iframe").content_frame
-        # self.ai_loader = self.iframe.locator("#aiLoaderOverlay")
-        # self.ai_heading = self.iframe.get_by_role("heading", name="AI Image Generator")
-        # self.generate_image_button = self.iframe.get_by_role("button", name="Generate Image")
-        # self.finalize_button = self.iframe.get_by_role("button", name="Finalize Mission")
-
-        # # Final page
-        # self.congratulations_heading = page.get_by_role("heading", name="Congratulations!")
-        
+        self.finish_button = page.locator("#finish-mission-btn")               
 
     def navigate(self, mission_url: str):
         # Wait until navigation completes (HTML ready)
@@ -89,7 +78,7 @@ class MissionPage:
         # # Close any open popover/overlay first
         # self.page.keyboard.press("Escape")
         # self.page.wait_for_timeout(500)
-        # 🔥 CLOSE TUTORIAL OVERLAY FIRST
+        #  CLOSE TUTORIAL OVERLAY FIRST
         self.close_tutorial_overlay_if_present()
         # Now click settings safely
         self.navbar_settings.click(force=True)
