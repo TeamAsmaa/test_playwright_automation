@@ -10,7 +10,7 @@ class LoginPage:
         self.ok_button = page.get_by_role("button", name="Ok")
 
     def navigate(self):
-        self.page.goto(self.url)
+        self.page.goto(self.url, wait_until="domcontentloaded", timeout=60000)
 
     def login(self, username: str, password: str) -> None:
         """
@@ -23,7 +23,12 @@ class LoginPage:
         
         self.password_input.fill(password)
         
-        self.login_button.click()
+        # self.login_button.click()
+        # Important for Firefox
+        self.login_button.wait_for(state="attached", timeout=30000)
+        self.page.wait_for_timeout(500)  # small stabilization delay
+
+        self.login_button.click(force=True) 
 
         try:
             # First try: direct redirect to dashboard
@@ -50,7 +55,7 @@ class LoginPage:
                 return
 
             except Exception as e:
-                self.page.screenshot(path="login-failed.png")
+                # self.page.screenshot(path="login-failed.png")
                 raise RuntimeError(
                     "Login failed:\n"
                     "- No dashboard redirect\n"
